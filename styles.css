@@ -1,11 +1,32 @@
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
+    --content-width: 25%;
 }
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+/* 
+#wrapper {
+    display: relative;
+    height: 10%;
+    width: 10%;
+    max-height: var(--content-width);
+    max-width: var(--content-width);
+} */
 
 #container {
     display: grid;
-    grid-gap: 1em;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    grid-gap: 0px;
     grid-template-rows: repeat(var(--grid-rows), 1fr);
     grid-template-columns: repeat(var(--grid-cols), 1fr);
 }

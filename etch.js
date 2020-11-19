@@ -1,4 +1,6 @@
 const container = document.querySelector("#container");
+const chosenColor = document.querySelector("#chosenColor");
+
 let bgcolor = "black";
 
 function makeRows (gridSize) {
@@ -20,7 +22,7 @@ function makeRows (gridSize) {
 
 function clearAll() {
     let pixels = container.querySelectorAll("div");
-    pixels.forEach(pixel => pixel.style.backgroundColor = '#ffffff')
+    pixels.forEach(pixel => pixel.style.backgroundColor = '#ffffff');
 }
 
 function resize() {
@@ -30,18 +32,20 @@ function resize() {
     makeRows(gridSize);
 }
 
-function colors() {
-    switch(bgcolor) {
-        case 'rainbow':
-            this.style.backgroundColor = `hsl(${Math.random() * 360, 100%, 50%})`;
-        case 'black':
-            this.style.backgroundColor = "black";
-        
-    }
+function selectColors(event) {
+    let pixels = container.querySelectorAll("div");
+    pixels.forEach(pixel => pixel.style.backgroundColor = event.target.value);
 }
+
+function userSelectColors(event) {
+    bgcolor = event.target.value;
+}
+
 
 document.getElementById("resize").onclick = resize;
 document.getElementById("clear").onclick = clearAll;
+chosenColor.addEventListener("input", userSelectColors, false);
+chosenColor.addEventListener("change", userSelectColors, false);
 
 
 makeRows(16);
